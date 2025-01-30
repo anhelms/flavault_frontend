@@ -1,50 +1,56 @@
-export function RecipesNew() {
+export function RecipesNew(props) {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const params = new FormData(event.target);
+        props.onCreateRecipe(params, () => event.target.reset());
+    };
+
   return (
     <>
         <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-xl mt-20">
           <h1 className="text-xl font-bold text-black capitalize light:text-black">New Recipe</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                     <div>
                         <label className="text-black light:text-black-200">Title</label>
-                        <input id="title" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
+                        <input name="title" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
                     </div>
 
                     <div>
                         <label className="text-black light:text-black-200">Chef</label>
-                        <input id="chef" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
+                        <input name="chef" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
                     </div>
 
                     <div>
                         <label className="text-black light:text-gray-200">Description</label>
-                        <textarea id="description" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-gray-800 light:text-gray-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring"></textarea>
+                        <textarea name="description" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-gray-800 light:text-gray-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring"></textarea>
                     </div>
 
                     <div>
                         <label className="text-black light:text-gray-200">Ingredients</label>
-                        <textarea id="ingredients" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-gray-800 light:text-gray-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring"></textarea>
+                        <textarea name="ingredients" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-gray-800 light:text-gray-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring"></textarea>
                     </div>
 
                     <div>
                         <label className="text-black light:text-gray-200">Directions</label>
-                        <textarea id="directions" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-gray-800 light:text-gray-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring"></textarea>
+                        <textarea name="directions" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-gray-800 light:text-gray-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring"></textarea>
                     </div>
 
                     <div className="flex gap-1">
                         <div>
                             <label className="text-black light:text-black-200">Prep Time</label>
-                            <input id="prep_time" type="number" className="block px-3 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input name="prep_time" type="number" className="block px-3 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
                         <div>
                             <label className="text-black light:text-black-200">Servings</label>
-                            <input id="servings" type="number" className="block px-3 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
+                            <input name="servings" type="number" className="block px-3 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
                         </div>
                     </div>
 
                     <div>
                         <label className="text-black light:text-black-200">Image Url or Upload</label>
 
-                        <input id="image_url" type="url" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
+                        <input name="image_url" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md light:bg-white-800 light:text-black-300 light:border-gray-600 focus:border-blue-300 light:focus:border-blue-300 focus:outline-none focus:ring" />
 
                         <div className="space-y-1 text-center">
                             <div className="flex text-sm text-black-600 m-2">
@@ -62,8 +68,9 @@ export function RecipesNew() {
                 </div>
 
                 <div className="flex justify-end mt-6 space-x-5">
-                    <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-900 focus:outline-none focus:bg-gray-600">Update</button>
-                    <button className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-900 focus:outline-none focus:bg-gray-600">Save</button>
+                    {/* UPDATE BUTTON NEEDS A TYPE */}
+                    {/* <button type="" className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-900 focus:outline-none focus:bg-gray-600">Update</button> */}
+                    <button type="submit">Save</button>
                 </div>
             </form>
         </section>

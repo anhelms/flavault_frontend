@@ -1,7 +1,9 @@
+import { RecipesIndex } from "./RecipesIndex";
+
 export function Content() {
   return (
-    <main>
-      <h1>Welcome to React!</h1>
-    </main>
+    <div>
+      <RecipesIndex />
+    </div>
   )
 }
